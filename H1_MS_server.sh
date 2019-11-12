@@ -49,8 +49,6 @@ mpirun -n $NUM_SERVER $DIR/tests/C/dataspaces_server -s $NUM_SERVER -c $(($NUM_W
 
 echo "Server is running at ${HOSTNAME} ..."
 
-# echo "Trigger the clients ..."
-# bash $DIR/H1_MS_client.sh
 
 echo "Server completed!"
 
