@@ -12,7 +12,7 @@ Be able to run the server in one job, and run clients on a different job. Confir
 
 1. H1_MS_main.sh
 
-This script controls the DataSpaces server and clients running order by submitting them in sequence. 
+This script controls the DataSpaces server and clients running order by submitting them in sequence. It measures the job waiting time in the job queue.
 
 2. H1_MS_server.sh
 
