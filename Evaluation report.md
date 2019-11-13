@@ -110,11 +110,48 @@ Server completed!
 
 
 
+### Run on Amarel with TCP configuration
+
+Pass
+
+1. DataSpaces output
+
+```bash
+[yq47@amarel1 C]$ cat *.log
+TS= 1 TRANSPORT_TYPE= DATASPACES read MAX time= 0.040944
+TS= 2 TRANSPORT_TYPE= DATASPACES read MAX time= 0.041826
+test_get_run(): done
+Kill Request Sent
+Server received kill command. Going to shut down...
+All ok.
+TS= 1 TRANSPORT_TYPE= DATASPACES write MAX time= 0.000101
+TS= 2 TRANSPORT_TYPE= DATASPACES write MAX time= 0.000032
+test_put_run(): done
+All complete
+All complete
+All complete
+All complete
+```
+
+2. Script output
+
+```bash
+[yq47@amarel1 C]$ cat *.stdout
+Start clients ...
+Clients are running at slepner016 ...
+Clients completed!
+Start server ...
+Server is running at slepner009 ...
+Server completed!
+```
+
+
+
 ### Result table
 
 | System | TCP  | Infiniband |
 | ------ | ---- | ---------- |
 | CAPER  | Pass |            |
-| Amarel |      |            |
+| Amarel | Pass |            |
 | Cori   |      |            |
 
