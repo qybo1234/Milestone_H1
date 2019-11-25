@@ -3,9 +3,9 @@
 #SBATCH -o H1_Client.%J.stdout
 #SBATCH -e H1_Client.%J.stderr
 #SBATCH -t 00:05:00
-#SBATCH -p caper
-#SBATCH -N 2
-#SBATCH -n 32
+#SBATCH -p main # For Amarel
+#SBATCH -N 1
+#SBATCH -n 10
 
 ###################################
 # Environment configurations	  #
@@ -17,7 +17,8 @@ module load openmpi
 ###################################
 
 # Absolute path to the dataspaces root directory
-DIR=/home1/yq47/dataspaces
+# DIR=/home1/yq47/DataSpaces #For Amaral
+DIR=
 
 # 2-dimension bounding box
 CONF_DIMS_1=128

@@ -3,9 +3,9 @@
 #SBATCH -o H1_Server.%J.stdout
 #SBATCH -e H1_Server.%J.stderr
 #SBATCH -t 00:05:00
-#SBATCH -p caper
+#SBATCH -p main   # For Amarel
 #SBATCH -N 1
-#SBATCH -n 16
+#SBATCH -n 2
 
 ###################################
 # Environment configurations	  #
@@ -18,7 +18,8 @@ module load openmpi
 ###################################
 
 # Absolute path to the dataspaces root directory
-DIR=/home1/yq47/dataspaces
+# DIR=/home1/yq47/dataspaces   # For Amarel
+DIR=
 
 # 2-dimension bounding box
 CONF_DIMS_1=128
@@ -48,6 +49,19 @@ echo "Start server ..."
 mpirun -n $NUM_SERVER $DIR/tests/C/dataspaces_server -s $NUM_SERVER -c $(($NUM_WRITER+$NUM_READER)) &>> server.log & sleep 2
 
 echo "Server is running at ${HOSTNAME} ..."
+
+###################################
+# Submit client jobs			  #
+###################################
+echo "Submit DataSpaces clients ..."
+start_ts_client=$(date +%s)
+sbatch $DIR/tests/C/H1_MS_client.sh
+
+while [ ! -f writer.log ]; do
+    sleep 1s
+done
+end_ts_client=$(date +%s)
+echo "DataSpaces clients launched after waiting $((end_ts_client - start_ts_client)) sec"
 
 
 echo "Server completed!"
